@@ -35,6 +35,7 @@ public class SpringContainer implements Container {
         System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, Constants.MODE);
         context = new ClassPathXmlApplicationContext(configPath.split("[,\\s]+"));
         context.start();
+
     }
 
     public void stop() {

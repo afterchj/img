@@ -13,6 +13,9 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
  	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+	<context:component-scan base-package="com.tpadsz.img" />
 
 	<dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}" />
 	
@@ -20,19 +23,15 @@
 	
 	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" dispatcher="all" threadpool="fixed" threads="30" accepts="1000" />	
 
-	<dubbo:service loadbalance="consistenthash" version="0.1.1"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager"
+	<dubbo:service loadbalance="consistenthash" version="0.1.4"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager"
 		ref="imageManager"  validation="true" />
-
-	<aop:aspectj-autoproxy />
-	<context:annotation-config />
-	<context:component-scan base-package="com.tpadsz.img" />
 
 	<beans profile="development">
 		<context:property-placeholder
 			ignore-resource-not-found="true"
 			location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />
 	</beans>
-	
+
 	<beans profile="backup">
 		<context:property-placeholder
 			ignore-resource-not-found="true"
@@ -44,7 +43,7 @@
 			ignore-resource-not-found="true"
 			location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.demo.properties" />
 	</beans>
-	
+
 	<beans profile="test">
 		<context:property-placeholder
 			ignore-resource-not-found="true"
