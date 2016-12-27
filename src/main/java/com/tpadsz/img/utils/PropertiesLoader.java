@@ -72,7 +72,9 @@ public class PropertiesLoader {
 	 * 取出String类型的Property.如果都為Null則返回Default值.
 	 */
 	public String getProperty(String key, String defaultValue) {
+		System.out.println("KEY = "+key);
 		String value = getValue(key);
+		System.out.println("获得的value = "+value);
 		return value != null ? value : defaultValue;
 	}
 

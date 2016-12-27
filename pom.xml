@@ -98,7 +98,11 @@
 			<groupId>log4j</groupId>
 			<version>${log4j.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-nop</artifactId>
+			<version>1.7.12</version>
+		</dependency>
 		 <!--aspectjweaver-->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -222,7 +226,11 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.3</version>
+		</dependency>
 		<!-- google -->
 		<dependency>
 			<groupId>com.google.collections</groupId>
@@ -251,6 +259,16 @@
 			<artifactId>mockito-core</artifactId>
 			<version>1.9.5</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.tpadsz</groupId>
+			<artifactId>core</artifactId>
+			<version>0.1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tpadsz</groupId>
+			<artifactId>img.api</artifactId>
+			<version>0.1.4</version>
 		</dependency>
 
 	</dependencies>
