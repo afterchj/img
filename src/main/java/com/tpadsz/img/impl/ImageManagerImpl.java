@@ -150,24 +150,17 @@ public class ImageManagerImpl implements ImageManager {
 
 		@Override
 		public void run() {
-			//System.out.println("跑进run了吗？？？？？？？");
 			File tmpFile = new File(localFile);
-			//System.out.println("估计tmpFile 没跑到，文件是否存在 = "+tmpFile.exists());
 			try {
 				FileUtils.copyFile(tmpFile, destination.toFile());
 				if(tmpFile.length()/1024/1024>50){
 					String url = Constants.URL_PREFIX+destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1);
-					//url="http://121.199.46.166/public/ctc/app/apk/com.yingxiong.dfzj.qihoo360-1.2.1-650.apk";
-					//url = "http://wap.dl.pinyin.sogou.com/wapdl/android/apk/SogouInput_android_v8.7_sweb.apk?frm=new_pcjs_index";
-					//System.out.println("跑进run了吗");
-					//boolean isDown = httpUtil.downLoad(url,"E:"+File.separator+timeFile+"File2BYS.apk");
 					boolean isDown = httpUtil.downLoad(url,storagePath+File.separator+time+"File2BYS.apk");
 					if(!isDown){
 						return;
 					}
 					httpUtil.LocalFileUpload(destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1),
 							url,storagePath+File.separator+time+"File2BYS.apk",time);
-
 				}
 			} catch (IOException e) {
 				logger.error("method:FileUtils#copyFile, source:" + localFile + ",destination:" + destination, e);
@@ -213,19 +206,13 @@ public class ImageManagerImpl implements ImageManager {
 
 	@Override
 	public String storageLocalFile(ImageOffer offer, String file,long time) throws SystemAlgorithmException {
-		//System.out.println("img storageLocalFile 运行了吗？？？？？？？？？？？？？？？？");
 		try {
-			//System.out.println("传进的路径 file  ="+file);
 			Path filePath = checkFile(offer);
-			//System.out.println("filePath = "+filePath);
 			threadPool.execute(new CopyLocalFileThread(file, filePath,time));
-			//System.out.println("线程跑完了吗,文件是否存在 = "+new File(file).exists());
 			if(!new File(file).exists()){
 				return null;
 			}
 			String url = fillImageUrl(offer);
-			//System.out.println("部署测试服务器所给地址 = "+url);
-			//url = "http://wap.dl.pinyin.sogou.com/wapdl/android/apk/SogouInput_android_v8.7_sweb.apk?frm=new_pcjs_index";
 			long fileLength = httpUtil.checkFileLength(url);
 			if(fileLength > 50){
 				return "http://apk.uichange.com"+(filePath.toString().replace("\\","/").substring(filePath.toString().indexOf(":")+1));
