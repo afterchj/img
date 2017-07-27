@@ -8,7 +8,7 @@ public class Ftp {
     private Integer port;//端口号
     private String userName;//用户名
     private String pwd;//密码
-    private String path;//aaa路径
+    private String path;//ftp服务器路径
 
     public String getIpAddr() {
         return ipAddr;

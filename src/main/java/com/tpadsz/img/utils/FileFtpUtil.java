@@ -21,9 +21,10 @@ public class FileFtpUtil {
         int reply;
         try{
             if (f.getPort()==null) {
-                ftpClient.connect(f.getIpAddr(),21);
+                ftpClient.connect(f.getIpAddr(),2121);
             }else{
                 ftpClient.connect(f.getIpAddr(),f.getPort());
+                System.out.println("ftpPort:"+f.getPort());
             }
             ftpClient.login(f.getUserName(), f.getPwd());
             //TODO 传输文件格式
@@ -95,7 +96,6 @@ public class FileFtpUtil {
             FileFtpUtil.closeFtp(ftpClient);
         }
     }
-
     public static void upload(File file)  {
         //如果是路径  会上传路径下的所有文件
         System.out.println("??????????????????????????????????");

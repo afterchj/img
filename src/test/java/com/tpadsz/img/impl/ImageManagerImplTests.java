@@ -219,41 +219,38 @@ public class ImageManagerImplTests {
 		@Override
 		public String call() {
 			System.out.println("??????????????????????");
-			String taskStatus = null;
+			String taskStatus = "";
 			while(true){
 				try {
 					Thread.sleep(2000);
 					taskStatus = new HttpUtil().checkFileStatus(taskId);
-					if(taskStatus.contains("Task Waiting") || taskStatus.contains("Task Runing")){
-						continue;
-					}else if(taskStatus.contains("Task Success")){
-						taskStatus = "Task Success";
-						break;
-					}else if(taskStatus.contains("Task not Found")){
-						taskStatus = "Task not Found";
-						break;
-					}else if(taskStatus.contains("Task Md5 Error") ){
-						taskStatus = "Task Md5 Error";
-						break;
-					}else if(taskStatus.contains("Task Timeout")){
-						taskStatus = "Task Timeout";
-						break;
-					}else if(taskStatus.contains("Task Error")){
-						taskStatus = "Task Error";
-						break;
-					}else if(taskStatus.contains("Task Failure")){
-						taskStatus = "Task Failure";
-						break;
-					}
+//					if(taskStatus.contains("Task Waiting") || taskStatus.contains("Task Runing")){
+//						continue;
+//					}else if(taskStatus.contains("Task Success")){
+//						taskStatus = "Task Success";
+//						break;
+//					}else if(taskStatus.contains("Task not Found")){
+//						taskStatus = "Task not Found";
+//						break;
+//					}else if(taskStatus.contains("Task Md5 Error") ){
+//						taskStatus = "Task Md5 Error";
+//						break;
+//					}else if(taskStatus.contains("Task Timeout")){
+//						taskStatus = "Task Timeout";
+//						break;
+//					}else if(taskStatus.contains("Task Error")){
+//						taskStatus = "Task Error";
+//						break;
+//					}else if(taskStatus.contains("Task Failure")){
+//						taskStatus = "Task Failure";
+//						break;
+//					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
+				System.out.println(taskStatus);
+				return taskStatus;
 			}
-
-			System.out.println(taskStatus);
-
-			return taskStatus;
 		}
 	}
 	class TaskWithResult implements Callable<String>{//实现这个接口，调用的是call()方法
@@ -344,7 +341,7 @@ public class ImageManagerImplTests {
 		String filepath = "E:"+File.separator+"1.apk";
 		ImageOffer imageOffer = new ImageOffer("8", "ctc", "app", "apk", "123","apk");
 
-		String url= imageManager.storageLocalFile(imageOffer,filepath,System.currentTimeMillis());
+		String url= imageManager.storageLocalFile(imageOffer,filepath);//filepath,System.currentTimeMillis()
 		System.out.println(url);
 		while(true){
 
@@ -358,7 +355,7 @@ public class ImageManagerImplTests {
 		String url = "http://121.199.46.166/public/ctc/app/apk/com.yingxiong.dfzj.qihoo360-1.2.1-650.apk";
 		ImageOffer imageOffer = new ImageOffer("8", "ctc", "app", "apk", "123","apk");
 
-		String url1= imageManager.storageURL(imageOffer,url,System.currentTimeMillis());
+		String url1= imageManager.storageURL(imageOffer,url);
 		System.out.println(url1);
 		while(true){
 
@@ -368,14 +365,14 @@ public class ImageManagerImplTests {
 	@Test
 	public void testStatus() throws SystemAlgorithmException {
 
-		System.out.println(imageManager.getTaskStatus("d6cd8046ac0dc487fc1aef84ba62c53c"));
+		//System.out.println(imageManager.getTaskStatus("d6cd8046ac0dc487fc1aef84ba62c53c"));
 	}
 	//http://121.199.46.166/public/ctc/app/apk/com.yingxiong.dfzj.qihoo360-1.2.1-650.apk
 	@Test
 	public void testTaskStatus() throws SystemAlgorithmException {
 		//9d51230a92f659a6e7d35fb8e79108af
-		String result = imageManager.getTaskStatus("9d51230a92f659a6e7d35fb8e79108af");
-		System.out.println(result);
+//		String result = imageManager.getTaskStatus("9d51230a92f659a6e7d35fb8e79108af");
+//		System.out.println(result);
 	}
 	@Test
     public void testDownLoad(){

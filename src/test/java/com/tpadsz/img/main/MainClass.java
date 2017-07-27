@@ -8,10 +8,9 @@ import com.tpadsz.img.utils.Constants;
 
 
 public class MainClass {
-
-	public static void main(String[] args) throws IOException {
-		System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, Constants.MODE);
-		com.alibaba.dubbo.container.Main.main(args);
-	}
-	
+    public static void main(String[] args) throws IOException {
+        System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, Constants.MODE);
+        System.out.println("model="+ Constants.MODE);
+        com.alibaba.dubbo.container.Main.main(args);
+    }
 }

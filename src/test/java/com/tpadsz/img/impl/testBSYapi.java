@@ -128,7 +128,6 @@ public class testBSYapi {
         while(true){
             Thread.sleep(5000);
             new HttpUtil().queryFile("d61a3f37293aa91418dff67a81c536d8");
-
         }
     }
     @Test

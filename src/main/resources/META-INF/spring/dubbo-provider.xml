@@ -25,9 +25,7 @@
 		<!--&lt;!&ndash;<property name="pwd" value="#{ftp.local.pwd}"></property>&ndash;&gt;-->
 		<!--&lt;!&ndash;<property name="path" value="#{ftp.local.root}"></property>&ndash;&gt;-->
 	<!--</bean>-->
-	<context:property-placeholder
-			ignore-resource-not-found="true"
-			location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />
+	<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />
 
 	<context:component-scan base-package="com.tpadsz.img" />
 
@@ -37,8 +35,7 @@
 	
 	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" dispatcher="all" threadpool="fixed" threads="30" accepts="1000" />
 
-	<dubbo:service loadbalance="consistenthash" version="0.1.5"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager"
-		ref="imageManager"  validation="true" />
+	<dubbo:service loadbalance="consistenthash" version="0.1.6"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager" ref="imageManager"  validation="true" />
 
 	<!--<beans profile="development">-->
 		<!--<context:property-placeholder-->

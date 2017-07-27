@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tpadsz</groupId>
 	<artifactId>img</artifactId>
-	<version>0.1.5-SNAPSHOT</version>
+	<version>0.1.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>img</name>
 	<!--<url>http://maven.apache.org</url>-->
@@ -87,11 +87,6 @@
 	</properties>
 	<dependencies>
 
-		<dependency>
-			<groupId>com.tpadsz</groupId>
-			<artifactId>img.api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 
 		<dependency>
 			<artifactId>log4j</artifactId>
@@ -268,7 +263,7 @@
 		<dependency>
 			<groupId>com.tpadsz</groupId>
 			<artifactId>img.api</artifactId>
-			<version>0.1.4</version>
+			<version>0.1.6</version>
 		</dependency>
 
 	</dependencies>
