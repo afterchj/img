@@ -209,28 +209,4 @@ public class HttpImplUtil {
         }
         return file;
     }
-
-    public static void main(String[] args) throws Exception {
-        DateFormat format = new SimpleDateFormat("yyyyMMdd");
-        String date = format.format(new Date());
-        String innercode = "PNSOJXSW";
-        HttpPostParams params = new HttpPostParams();
-        params.setUsername("uichange");
-        long timestamp = new Date().getTime();
-        System.out.println("upload-->timesamp=" + timestamp);
-        params.setId(md5(params.getPublish_url() + timestamp));
-        params.setDownload_url("http://wap.dl.pinyin.sogou.com/wapdl/android/apk/SogouInput_android_v8.7_sweb.apk?frm=new_pcjs_index");
-        params.setPublish_url("http://www.uichange.com");//http://www.uichange.com
-        params.setSignature(md5(date + params.getUsername() + innercode));
-        System.out.println(params.toString());
-        String str=String.format("Hi,%s:%s.%s", "王南","王力","王张");
-        System.out.println(str);
-        File file = checkFile(params.getDownload_url(), "C:/test/01.apk");
-        params.setMd5(md5File(file));
-//        File file = test.checkFile(params.getDownload_url(), "C:/test/01.apk");
-//        HttpImplUtil.uploadFile(params);
-//        HttpImplUtil.deleteFile(params);
-//        System.out.println(httpImplUtil.md5File(file));
-        HttpImplUtil.queryTaskStatus("123122");
-    }
 }
