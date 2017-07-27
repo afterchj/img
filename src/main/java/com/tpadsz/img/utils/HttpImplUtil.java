@@ -52,7 +52,7 @@ public class HttpImplUtil {
                 if (entity != null) {
                     flag = true;
                     System.out.println(response.getStatusLine());
-                    System.out.println("Response content: " + EntityUtils.toString(entity, "UTF-8"));
+                    System.out.println("上传文件状态: " + EntityUtils.toString(entity, "UTF-8"));
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -93,7 +93,7 @@ public class HttpImplUtil {
                 if (entity != null) {
                     flag = true;
                     System.out.println(response.getStatusLine());
-                    System.out.println("Response content: " + EntityUtils.toString(entity, "UTF-8"));
+                    System.out.println("删除文件状态: " + EntityUtils.toString(entity, "UTF-8"));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -128,7 +128,7 @@ public class HttpImplUtil {
                 System.out.println(response.getStatusLine());
                 if (entity != null) {
                     flag = true;
-                    System.out.println("Response content: " + EntityUtils.toString(entity, "UTF-8"));
+                    System.out.println("查询文件状态: " + EntityUtils.toString(entity, "UTF-8"));
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
