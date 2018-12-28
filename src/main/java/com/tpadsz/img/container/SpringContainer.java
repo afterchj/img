@@ -33,7 +33,7 @@ public class SpringContainer implements Container {
         if (configPath == null || configPath.length() == 0) {
             configPath = DEFAULT_SPRING_CONFIG;
         }
-        System.out.println("configPath=" + configPath);
+        System.out.println(Constants.MODE+"=====configure======" + configPath);
         System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, Constants.MODE);
         context = new ClassPathXmlApplicationContext(configPath.split("[,\\s]+"));
         context.start();
