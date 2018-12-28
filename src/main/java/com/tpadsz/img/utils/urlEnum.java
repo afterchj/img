@@ -6,6 +6,7 @@ package com.tpadsz.img.utils;
 public enum urlEnum {
     Url_BYS("白云山", "xxxxxxxxxx"),
     Url_Local("本地", "C:\\Users\\pan.sun\\IdeaProjects\\img.api\\target");
+
     urlEnum(String code, String value) {
         this.value = value;
         this.code = code;
@@ -21,4 +22,8 @@ public enum urlEnum {
         return code;
     }
 
+    public static void main(String[] args) {
+        urlEnum urlEnum=Url_Local;
+        System.out.println(urlEnum.getCode()+"  "+urlEnum.getValue());
+    }
 }

@@ -81,15 +81,15 @@ public class ImageManagerImpl implements ImageManager {
             try {
                 FileUtils.writeStringToFile(destination.toFile(), source);
                 //后续根据需求开放功能
-//				if(source.length()/1024/1024>50){
-//					String url = Constants.URL_PREFIX+destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1);
-//					boolean isDown = httpUtil.downLoad(url,storagePath+File.separator+time+"File2BYS.apk");
-//					if(!isDown){
-//						return;
-//					}
-//					httpUtil.LocalFileUpload(destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1),
-//							url,storagePath+File.separator+time+"File2BYS.apk",time);
-//				}
+				if(source.length()/1024/1024>50){
+					String url = Constants.URL_PREFIX+destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1);
+					boolean isDown = httpUtil.downLoad(url,storagePath+File.separator+time+"File2BYS.apk");
+					if(!isDown){
+						return;
+					}
+					httpUtil.LocalFileUpload(destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1),
+							url,storagePath+File.separator+time+"File2BYS.apk",time);
+				}
             } catch (IOException e) {
                 logger.error("source:" + source + "destination:" + destination, e);
             }
@@ -159,7 +159,7 @@ public class ImageManagerImpl implements ImageManager {
             File tmpFile = new File(localFile);
             try {
                 FileUtils.copyFile(tmpFile, destination.toFile());
-                if (tmpFile.length() / 1024 / 1024 > 50) {
+                if (tmpFile.length() / 1024 / 1024 > 30) {
                     String url = Constants.URL_PREFIX + destination.toString().replace("\\", "/").substring(destination.toString().indexOf(":") + 1);
                     boolean isDown = httpUtil.downLoad(url, storagePath + File.separator + time + "File2BYS.apk");
                     if (!isDown) {
