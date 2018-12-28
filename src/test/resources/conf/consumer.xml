@@ -15,16 +15,16 @@
  - limitations under the License.
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="img-test-consumer"  />
-    
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />
-    
-	<!-- 业务使用-->
-	<dubbo:reference id="imageManager" version="1.0.0"  interface="com.tpadsz.img.api.ImageManager" validation="true" />
+    <dubbo:application name="img-test-consumer"/>
+
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+    <!--<dubbo:registry protocol="zookeeper" address="10.10.11.81:2181,10.10.11.68:2181,10.10.11.90:2181"/>-->
+    <!-- 业务使用-->
+    <dubbo:reference id="imageManager" version="0.1.0" interface="com.tpadsz.img.api.ImageManager" validation="true"/>
 
 </beans>

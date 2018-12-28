@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -81,15 +82,15 @@ public class ImageManagerImpl implements ImageManager {
             try {
                 FileUtils.writeStringToFile(destination.toFile(), source);
                 //后续根据需求开放功能
-				if(source.length()/1024/1024>50){
-					String url = Constants.URL_PREFIX+destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1);
-					boolean isDown = httpUtil.downLoad(url,storagePath+File.separator+time+"File2BYS.apk");
-					if(!isDown){
-						return;
-					}
-					httpUtil.LocalFileUpload(destination.toString().replace("\\","/").substring(destination.toString().indexOf(":")+1),
-							url,storagePath+File.separator+time+"File2BYS.apk",time);
-				}
+                if (source.length() / 1024 / 1024 > 50) {
+                    String url = Constants.URL_PREFIX + destination.toString().replace("\\", "/").substring(destination.toString().indexOf(":") + 1);
+                    boolean isDown = httpUtil.downLoad(url, storagePath + File.separator + time + "File2BYS.apk");
+                    if (!isDown) {
+                        return;
+                    }
+                    httpUtil.LocalFileUpload(destination.toString().replace("\\", "/").substring(destination.toString().indexOf(":") + 1),
+                            url, storagePath + File.separator + time + "File2BYS.apk", time);
+                }
             } catch (IOException e) {
                 logger.error("source:" + source + "destination:" + destination, e);
             }
@@ -180,7 +181,7 @@ public class ImageManagerImpl implements ImageManager {
     }
 
     private String fillImageUrl(ImageOffer offer) {
-        System.out.println("result="+Constants.URL_PREFIX+"?"+offer.getSystem()+"?"+offer.getType()+"?"+offer.getPrefix()+"?"+offer.getName()+"?"+offer.getSuffix());
+        System.out.println("result=" + Constants.URL_PREFIX + "?" + offer.getSystem() + "?" + offer.getType() + "?" + offer.getPrefix() + "?" + offer.getName() + "?" + offer.getSuffix());
         return String.format("%s/%s/%s/%s/%s.%s", Constants.URL_PREFIX, offer.getSystem(), offer.getType(), offer.getPrefix(), offer.getName(), offer.getSuffix());
     }
 
@@ -204,6 +205,16 @@ public class ImageManagerImpl implements ImageManager {
     private Path checkFile(ImageOffer offer) {
         Path path = Paths.get(storagePath.toAbsolutePath().toString(), offer.getSystem(), offer.getType(), offer.getPrefix(), offer.getName() + "." + offer.getSuffix());
         return path;
+    }
+
+    @Override
+    public String show(Object... objects) {
+        StringBuilder builder = new StringBuilder("show:");
+        for (int i = 0; i < objects.length; i++) {
+            System.out.println("第" + (i + 1) + "个参数:"+objects[i]);
+            builder.append(objects[i] + "->");
+        }
+        return builder.toString();
     }
 
     @Override

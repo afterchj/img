@@ -35,7 +35,7 @@
 	
 	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" dispatcher="all" threadpool="fixed" threads="30" accepts="1000" />
 
-	<dubbo:service loadbalance="consistenthash" version="0.1.1"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager" ref="imageManager"  validation="true" />
+	<dubbo:service loadbalance="consistenthash" version="0.1.0"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager" ref="imageManager"  validation="true" />
 
 	<!--<beans profile="development">-->
 		<!--<context:property-placeholder-->

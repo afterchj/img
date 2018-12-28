@@ -1,5 +1,6 @@
 package com.tpadsz.img.utils;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
@@ -57,8 +58,11 @@ public class FtpUtil {
             }
         }
     }
+
     public static void main(String[] args) throws Exception {
-        ftpClient = getFtpClient();
-        System.out.println(ftpClient);
+//        ftpClient = getFtpClient();
+//        System.out.println(ftpClient);
+        String configPath = "classpath*:META-INF/spring/*.xml,classpath*:conf/*.xml";
+        System.out.println(JSON.toJSONString(configPath.split("[,\\s]+")));
     }
 }
