@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	   xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:jee="http://www.springframework.org/schema/jee" xmlns:cache="http://www.springframework.org/schema/cache"
-	   xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
-	   xmlns:beans="http://www.springframework.org/schema/beans"
-	    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
@@ -15,57 +15,59 @@
  	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
  	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
-	<aop:aspectj-autoproxy />
-	<context:annotation-config />
-	<!--<util:properties id="ftp" location="classpath:setup.ftp.properties"/>-->
-	<!--<bean name="localFtp" class="com.tpadsz.img.utils.Ftp">-->
-		<!--&lt;!&ndash;<property name="ipAddr" value="#{ftp.local.ip}"></property>&ndash;&gt;-->
-		<!--&lt;!&ndash;<property name="port" value="#{ftp.local.port}"></property>&ndash;&gt;-->
-		<!--&lt;!&ndash;<property name="userName" value="#{ftp.local.username}"></property>&ndash;&gt;-->
-		<!--&lt;!&ndash;<property name="pwd" value="#{ftp.local.pwd}"></property>&ndash;&gt;-->
-		<!--&lt;!&ndash;<property name="path" value="#{ftp.local.root}"></property>&ndash;&gt;-->
-	<!--</bean>-->
-	<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <!--<util:properties id="ftp" location="classpath:setup.ftp.properties"/>-->
+    <!--<bean name="localFtp" class="com.tpadsz.img.utils.Ftp">-->
+    <!--&lt;!&ndash;<property name="ipAddr" value="#{ftp.local.ip}"></property>&ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="port" value="#{ftp.local.port}"></property>&ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="userName" value="#{ftp.local.username}"></property>&ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="pwd" value="#{ftp.local.pwd}"></property>&ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="path" value="#{ftp.local.root}"></property>&ndash;&gt;-->
+    <!--</bean>-->
+    <!--<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />-->
 
-	<context:component-scan base-package="com.tpadsz.img" />
+    <context:component-scan base-package="com.tpadsz.img"/>
 
-	<dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}" />
-	<!--<dubbo:registry protocol="zookeeper"  address="${dubbo.registry.address}" />-->
-	<dubbo:registry address="${dubbo.registry.address}" />
-	
-	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" dispatcher="all" threadpool="fixed" threads="30" accepts="1000" />
+    <dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}"/>
+    <!--<dubbo:registry protocol="zookeeper"  address="${dubbo.registry.address}" />-->
+    <dubbo:registry address="${dubbo.registry.address}"/>
 
-	<dubbo:service loadbalance="consistenthash" version="0.1.0"	cluster="failover" retries="2" interface="com.tpadsz.img.api.ImageManager" ref="imageManager"  validation="true" />
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" dispatcher="all" threadpool="fixed" threads="30"
+                    accepts="1000"/>
 
-	<!--<beans profile="development">-->
-		<!--<context:property-placeholder-->
-				<!--ignore-resource-not-found="true"-->
-				<!--location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />-->
-	<!--</beans>-->
+    <dubbo:service loadbalance="consistenthash" version="0.1.1" cluster="failover" retries="2"
+                   interface="com.tpadsz.img.api.ImageManager" ref="imageManager" validation="true"/>
 
-	<!--<beans profile="backup">-->
-		<!--<context:property-placeholder-->
-				<!--ignore-resource-not-found="true"-->
-				<!--location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.backup.properties" />-->
-	<!--</beans>-->
+    <!--<beans profile="development">-->
+    <!--<context:property-placeholder-->
+    <!--ignore-resource-not-found="true"-->
+    <!--location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.development.properties" />-->
+    <!--</beans>-->
 
-	<!--<beans profile="demo">-->
-		<!--<context:property-placeholder-->
-				<!--ignore-resource-not-found="true"-->
-				<!--location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.demo.properties" />-->
-	<!--</beans>-->
+    <beans profile="backup">
+        <context:property-placeholder
+                ignore-resource-not-found="true"
+                location="classpath*:/setup.properties,classpath*:/dubbo.properties, classpath*:/setup.backup.properties"/>
+    </beans>
 
-	<!--<beans profile="test">-->
-		<!--<context:property-placeholder-->
-				<!--ignore-resource-not-found="true"-->
-				<!--location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.test.properties" />-->
-	<!--</beans>-->
+    <beans profile="demo">
+        <context:property-placeholder
+                ignore-resource-not-found="true"
+                location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.demo.properties"/>
+    </beans>
 
-	<!--<beans profile="production">-->
-		<!--<context:property-placeholder-->
-				<!--ignore-resource-not-found="true"-->
-				<!--location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.production.properties" />-->
-	<!--</beans>-->
+    <beans profile="test">
+        <context:property-placeholder
+                ignore-resource-not-found="true"
+                location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.test.properties"/>
+    </beans>
+
+    <beans profile="production">
+        <context:property-placeholder
+                ignore-resource-not-found="true"
+                location="classpath*:/setup.properties, classpath*:/dubbo.properties, classpath*:/setup.production.properties"/>
+    </beans>
 
 </beans>
 
