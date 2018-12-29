@@ -15,7 +15,7 @@ public class MyClient {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:conf/consumer.xml");
         ImageManager imageManager = (ImageManager) ctx.getBean("imageManager");
         String value = imageManager.show("code", "12312", "mobile", "18170756879");
-        System.out.println("value=" + value);
+        System.out.println(value);
     }
 }
 

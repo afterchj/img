@@ -211,8 +211,12 @@ public class ImageManagerImpl implements ImageManager {
     public String show(Object... objects) {
         StringBuilder builder = new StringBuilder("show:");
         for (int i = 0; i < objects.length; i++) {
-            System.out.println("第" + (i + 1) + "个参数:"+objects[i]);
-            builder.append(objects[i] + "->");
+            System.out.println("第" + (i + 1) + "个参数:" + objects[i]);
+            if (i == objects.length - 1) {
+                builder.append(objects[i]);
+            }else {
+                builder.append(objects[i] + "->");
+            }
         }
         return builder.toString();
     }
