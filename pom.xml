@@ -7,68 +7,68 @@
     <packaging>jar</packaging>
     <name>img</name>
     <!--<url>http://maven.apache.org</url>-->
-    <repositories>
-        <repository>
-            <id>nexus-public</id>
-            <name>Nexus Public Repository</name>
-            <url>http://192.168.200.124:8081/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>nexus-releases</id>
-            <name>nexus distribution release repository</name>
-            <url>http://192.168.200.124:8081/nexus/content/repositories/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>nexus distribution snapshot repository</name>
-            <url>http://192.168.200.124:8081/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>http://192.168.200.124:8081/nexus/content/repositories/central/</url>
-            <layout>default</layout>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>nexus-public</id>-->
+            <!--<name>Nexus Public Repository</name>-->
+            <!--<url>http://192.168.200.124:8081/nexus/content/groups/public/</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<name>nexus distribution release repository</name>-->
+            <!--<url>http://192.168.200.124:8081/nexus/content/repositories/releases/</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>nexus-snapshots</id>-->
+            <!--<name>nexus distribution snapshot repository</name>-->
+            <!--<url>http://192.168.200.124:8081/nexus/content/repositories/snapshots/</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+            <!--<releases>-->
+                <!--<enabled>false</enabled>-->
+            <!--</releases>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>central</id>-->
+            <!--<name>Central Repository</name>-->
+            <!--<url>http://192.168.200.124:8081/nexus/content/repositories/central/</url>-->
+            <!--<layout>default</layout>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+            <!--<releases>-->
+                <!--<updatePolicy>never</updatePolicy>-->
+            <!--</releases>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>nexus distribution snapshot repository</name>
-            <url>http://192.168.200.124:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-releases</id>
-            <name>nexus distribution repository</name>
-            <url>http://192.168.200.124:8081/nexus/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<snapshotRepository>-->
+            <!--<id>nexus-snapshots</id>-->
+            <!--<name>nexus distribution snapshot repository</name>-->
+            <!--<url>http://192.168.200.124:8081/nexus/content/repositories/snapshots/</url>-->
+        <!--</snapshotRepository>-->
+        <!--<repository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<name>nexus distribution repository</name>-->
+            <!--<url>http://192.168.200.124:8081/nexus/content/repositories/releases/</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
     <properties>
         <skip_maven_deploy>false</skip_maven_deploy>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -86,7 +86,6 @@
         <jetty.version>7.6.10.v20130312</jetty.version>
     </properties>
     <dependencies>
-
 
         <dependency>
             <artifactId>log4j</artifactId>
@@ -255,11 +254,11 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.tpadsz</groupId>
-            <artifactId>core</artifactId>
-            <version>0.1.8</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.tpadsz</groupId>-->
+            <!--<artifactId>core</artifactId>-->
+            <!--<version>0.1.8</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.tpadsz</groupId>
             <artifactId>img.api</artifactId>
@@ -329,7 +328,6 @@
                     </execution>
                 </executions>
             </plugin>
-
 
             <!-- test插件, 仅测试名称为*Test的类,使用支持分组测试的surefire-junit47 driver -->
             <plugin>
