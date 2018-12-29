@@ -174,7 +174,7 @@ public class ImageManagerImpl implements ImageManager {
                 logger.error("method:FileUtils#copyFile, source:" + localFile + ",destination:" + destination, e);
             } finally {
                 if (tmpFile != null && tmpFile.exists()) {
-                    org.apache.commons.io.FileUtils.deleteQuietly(tmpFile);
+                    FileUtils.deleteQuietly(tmpFile);
                 }
             }
         }
